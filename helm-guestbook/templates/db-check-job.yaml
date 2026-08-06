@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: read-db-config
+  annotations: 
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: config-reader
+          image: busybox:1.36
+          env:
+            - name: CONFIG_DATA
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: host
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              echo "$CONFIG_DATA"
+              sleep 5
+  backoffLimit: 1
