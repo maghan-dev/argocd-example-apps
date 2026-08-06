@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: read-db-config
   annotations: 
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "20"
 spec:
   template:
     spec:

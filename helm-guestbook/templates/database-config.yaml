@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: db-config
   annotations: 
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "10"
     description: "This ConfigMap configures the database"
 data:
   host: "postgres"
